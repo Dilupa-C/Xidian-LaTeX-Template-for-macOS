@@ -1,5 +1,7 @@
 # MacTeX 2025 管理指南
 
+[🇨🇳 中文](#mactex-2025-管理指南) | [🇺🇸 English](#mactex-2025-management-guide)
+
 模板 **只支持 MacTeX 2025**。请严格按照以下顺序检查、安装、更新与切换环境。
 
 ---
@@ -78,3 +80,88 @@ sudo tlmgr update --all --self
   若脚本提示未检测到 2025，需先完成安装。
 
 执行完以上步骤后，即可回到项目根目录进行编译。若仍有问题，请再次确认是否遗漏 `sudo tlmgr update --all --self`。
+
+---
+
+# MacTeX 2025 Management Guide
+
+[🇨🇳 中文](#mactex-2025-管理指南) | [🇺🇸 English](#mactex-2025-management-guide)
+
+The template **only supports MacTeX 2025**. Please strictly follow the sequence below to check, install, update, and switch environments.
+
+---
+
+## 1. Check Current Version
+```bash
+/Library/TeX/texbin/xelatex --version | head -1
+```
+- If output contains `TeX Live 2025`: Already pointing to 2025, proceed directly to [Step 3](#3-update-tlmgr).
+- If output shows a different year: Continue checking installed versions.
+
+Check all installed TeX Live versions:
+```bash
+ls -d /usr/local/texlive/[0-9]* 2>/dev/null | xargs -n1 basename
+```
+- If `2025` is not in the list, execute [Step 2.1](#21-mactex-2025-not-yet-installed).
+- If `2025` exists but is not current, the symbolic link needs switching, execute [Step 2.2](#22-multiple-versions-installed-need-to-switch).
+
+---
+
+## 2. Install or Switch to MacTeX 2025
+
+### 2.1 MacTeX 2025 Not Yet Installed
+1. Download the installation package (~5 GB)  
+   - Tsinghua Mirror (Recommended): `https://mirror.tuna.tsinghua.edu.cn/ctan/systems/mac/mactex/MacTeX.pkg`
+   - Access directly via Safari/Chrome to download.
+2. Install  
+   - Double-click `MacTeX.pkg` and follow the wizard. Default directory is `/usr/local/texlive/2025`.
+3. Verify  
+   ```bash
+   ls -d /usr/local/texlive/2025
+   ```
+
+After installation, continue to [Step 2.2](#22-multiple-versions-installed-need-to-switch) to ensure the symbolic link points to 2025.
+
+### 2.2 Multiple Versions Installed, Need to Switch
+
+The repository provides `switch-texlive.sh` to switch the `/Library/TeX/texbin` symbolic link:
+```bash
+cd "MacTex_Installation_Settings"
+./switch-texlive.sh          # Check current and installed versions
+./switch-texlive.sh 2025     # Switch to MacTeX 2025 (requires admin password)
+```
+
+The script will automatically locate the correct `bin/*-darwin` directory and update system paths. After switching:
+```bash
+/Library/TeX/texbin/xelatex --version | head -1
+```
+Confirm the output contains `TeX Live 2025`. If using editors like VS Code, restart to load the new path.
+
+---
+
+## 3. Update tlmgr
+
+Whether just installed or just switched to 2025, you **must execute**:
+> The author missed this step, resulting in incorrect image positioning. Please be sure to execute this command.
+```bash
+sudo tlmgr update --all --self
+```
+This command synchronizes `tlmgr` itself and all packages. Skipping this step will cause outdated package versions and compilation failures.
+
+Recommended to re-execute before major changes or template updates.
+
+---
+
+## 4. Quick Troubleshooting
+- **Check symbolic link**  
+  ```bash
+  ls -l /Library/TeX/texbin
+  ```
+  Target path should point to `/usr/local/texlive/2025/bin/...`
+- **View script help**  
+  ```bash
+  ./switch-texlive.sh
+  ```
+  If script indicates 2025 not detected, installation is needed first.
+
+After completing the above steps, return to the project root directory for compilation. If issues persist, please verify that `sudo tlmgr update --all --self` was not missed.

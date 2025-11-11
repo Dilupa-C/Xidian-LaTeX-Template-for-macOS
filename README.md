@@ -1,8 +1,27 @@
-# MacOS 使用西电 LaTeX 模板说明
+<div align="center">
+
+# 西电 LaTeX 模板 macOS 使用指南
+
+[![LaTeX](https://img.shields.io/badge/LaTeX-TeX%20Live%202025-008080.svg)](https://www.tug.org/texlive/) [![License](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE) [![macOS](https://img.shields.io/badge/macOS-Compatible-success.svg)](https://www.apple.com/macos/)
+
+[🇨🇳 中文](./README.md) | [🇺🇸 English](./README_EN.md)
+
+</div>
+
+## 🙏 致谢
+
+感谢以下作者的贡献：
+
+- **[XDUTS](https://github.com/note286/xduts)** - 西电 TeX 模板套件
+- **[wjm-jimmy](https://github.com/wjm-jimmy)** - 感谢jimmy师兄贡献的模板
+
+---
+
+## 📖 概述
 
 此仓库验证通过的最小工作流：**安装字体 → 确保 MacTeX 2025 → 运行 `sudo tlmgr update --self --all` → 依照下述命令编译**。若任何环节跳过，最常见问题是图片位置异常、PDF 盒子错位或宏包缺失。
 
----
+
 
 ## 1. 环境要求（MacTeX 2025）
 1. **字体**：按照 [Font/Readme.md](./Font/Readme.md) 安装 Windows 版宋/黑/楷体。
