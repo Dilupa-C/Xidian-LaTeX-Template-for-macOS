@@ -1,0 +1,28 @@
+# TeX auxiliary files (ignore in all directories)
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.synctex
+*.synctex(busy)
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.xdv
+*.bbl
+*.blg
+
+# Misc build artifacts
+*.bcf
+*.run.xml
+*.gz
+*.zip
+.DS_Store
+
+# Build/output directories
+build/
+test/
+
+# Keep documentation PDFs (xduts.pdf, sample outputs) tracked, so no ignore rules.

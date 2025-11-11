@@ -1,0 +1,108 @@
+\documentclass{xdupgthesis}
+\usepackage{tabularray}%最好用的表格排版宏包
+\usepackage{subcaption}%排版子图
+\usepackage{xcolor}
+%\UseTblrLibrary{booktabs}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{arydshln}  %矩阵中的虚线
+\usepackage{bbding}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{bm}
+%\usepackage{natbib}
+%\usepackage{gbt7714}
+%\graphicspath{figures/}
+\xdusetup{
+style = {
+	cjk-font = win, 					%中文字体
+%	latin-font = tac,					%英文字体
+	title-bold-math = true,				%标题数学字体加粗
+	language = zh,  					%论文语言
+	customize-edubg = false,
+	customize-resresult = false,
+	customize-los = false,
+	title-row-los = false,				%仅第一页显示符号对照表标题
+	colspec-los = {Q[l,t]X[l,t]}, 		%设置符号对照表格式
+	customize-loa = false,
+	title-row-loa = false,				%仅第一页显示缩略语对照表标题
+	colspec-loa = {X[l,t]X[3,t]X[2,t]},	%设置缩略语对照表格式
+	bib-backend = bibtex,
+	customize-edubg = false,
+	customize-resresult = false,
+	font-type = file,
+	font-path = {Font},
+%	remove-page = {封面,题名页,声明页,目录,参考文献,致谢,作者简介}, %查重格式，由于正文引用了附录，因此单独删除附录
+%	remove-page = {致谢}, %明审格式
+%	remove-header = true, %移除页眉
+%	remove-footer = true, %移除页脚
+	},
+info = {
+graduate-type = {博士},
+degree-type = {学术},
+degree = {工学博士},
+title = {自适应学习平台排版流程示例},
+title* = {Sample Workflow for Adaptive Learning Theses},
+department = {信息工程学院},
+major = {智能系统与工程},
+major* = {Intelligent Systems Engineering},
+sub-major = {数字学习与系统设计},
+submit-date = {2024-9},
+author = {西电示例同学},
+author* = {Sample Student},
+supervisor = {示例导师},
+supervisor* = {Sample Advisor},
+supv-title = {副教授},
+supv-title* = {Associate Professor},
+student-id = {2024000000},
+clc = {TP271},
+abstract = {chapters/abstract-zh.tex},
+abstract* = {chapters/abstract-en.tex},
+keywords = {模板演示，自适应学习，排版流程，编译环境，字体依赖},
+keywords* = {template demonstration, adaptive learning, workflow, build environment, font setup},
+los = {chapters/los.tex},	%符号对照表
+loa = {chapters/loa.tex},	%缩略语对照表
+bib-resource = {references.bib},
+appendix = {{chapters/appendixA.tex}},%,{chapters/appendixB.tex}
+acknowledgements = {chapters/acknowledgements.tex},
+bio = {chapters/bio.tex},
+}
+}
+%--------------定义新的定理环境格式---------------
+\newtheoremstyle{mytheorem}{}{}{}{\parindent}{\bfseries}{.}{.5em}{}
+\theoremstyle{mytheorem}
+\newtheorem{theorem}{定理}[chapter]
+\newtheorem{corollary}{推论}[chapter]
+\newtheorem{lemma}{引理}[chapter]
+\newtheorem{definition}{定义}[chapter]
+\newtheorem{proposition}{命题}[chapter]
+\newtheorem{property}{性质}[chapter]
+\newtheorem{assumption}{假设}[chapter]
+\newtheorem{example}{例}[section]
+%--------------定义新的注记环境格式---------------
+\newtheoremstyle{myremark}{}{}{}{\parindent}{\bfseries}{.}{.5em}{}
+\theoremstyle{myremark}
+\newtheorem*{remark}{注}
+%--------------定义新的证明环境格式---------------
+\newtheoremstyle{myproof}{}{}{}{\parindent}{\bfseries}{:}{.5em}{}
+\theoremstyle{myproof}
+\newtheorem*{Proof}{证明}
+%--------------定义新的表格横线格式---------------
+\NewTableCommand\toprule{\hline[0.08em]}
+\NewTableCommand\midrule{\hline[0.05em]}
+\NewTableCommand\bottomrule{\hline[0.08em]}
+%--------------定义带圈数字-----------------------
+\newcommand*{\circled}[1]{\lower.7ex\hbox{\tikz\draw (0pt, 0pt)%
+		circle (.5em) node {\makebox[1em][c]{\small #1}};}} %圆圈数字
+\begin{document}
+\include{chapters/introduction}
+\include{chapters/chapter2}
+\include{chapters/chapter3}
+\include{chapters/chapter4}
+\include{chapters/chapter5}
+\include{chapters/chapter6}
+\include{chapters/chapter7}
+\include{chapters/conclusion}
+\end{document}

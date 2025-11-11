@@ -1,0 +1,20 @@
+\chapter{需求建模示例}\label{chap:modeling}
+本章演示如何用模板描述虚构项目的需求分析。内容包括场景化描述、信息流示意与符号定义，所有数据均为占位信息，仅用于展示排版效果。\parencite{workflow-tools}
+
+\section{场景化描述}
+示例项目将角色分为教师、学生与教学支持团队，通过访谈收集痛点并整理成需求表。作者可在此处引入定义、假设或表格，以说明关键变量及其约束。
+
+\section{信息流示意}
+图\ref{fig:logo-demo} 使用 `figures/ch2/xdulogo.pdf` 作为占位图，展示章节化管理插图的方式。将真实图片放入对应目录后，只需替换文件名即可。
+
+\begin{figure}[htbp]\centering
+  \includegraphics[width=0.4\textwidth,height=0.4\textwidth,keepaspectratio]{figures/ch2/xdulogo.pdf}
+  \caption{需求阶段的信息流示意\label{fig:logo-demo}}
+\end{figure}
+
+\section{符号与记号}
+示例系统在迭代 $k$ 时刻的状态为 $\bm{s}_k$，策略参数记为 $\bm{\theta}$。定义上层调度函数 $f(\cdot)$ 与噪声项 $\bm{\eta}_k$，即可写出占位方程：
+\begin{equation}
+  \bm{s}_{k+1} = f(\bm{s}_k, \bm{\theta}) + \bm{\eta}_k,
+\end{equation}
+并在符号表中登记符号含义，方便后续引用。\parencite{style-guide}

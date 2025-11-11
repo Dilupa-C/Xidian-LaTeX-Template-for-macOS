@@ -1,0 +1,13 @@
+\chapter{附录：脚本示例}\label{app:scripts}
+本附录提供占位脚本与命令行示例，帮助读者验证环境配置。
+
+\section{环境确认脚本}
+\begin{verbatim}
+#!/usr/bin/env bash
+/Library/TeX/texbin/xelatex --version | head -1
+sudo tlmgr update --self --all
+latexmk -xelatex -bibtex -synctex=1 main.tex
+\end{verbatim}
+
+\section{数据结构模板}
+可在此处粘贴伪代码、JSON 片段或命令说明，以展示如何记录额外信息。示例内容仅为占位，实际使用时请替换为真实脚本。

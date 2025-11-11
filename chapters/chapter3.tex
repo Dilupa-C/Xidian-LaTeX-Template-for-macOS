@@ -1,0 +1,36 @@
+\chapter{系统实现示例}\label{chap:implementation}
+本章给出占位的技术实现流程，包括模块划分、配置示例与脚本调度方式。请在真实项目中将相关描述替换为实际的工程内容。\parencite{workflow-tools}
+
+\section{模块划分}
+参考“数据采集—建模推理—可视化”三层结构列出核心模块。可通过枚举或流程图说明模块之间的接口，帮助读者理解系统边界。
+
+\section{配置样例}
+表~\ref{tab:config} 展示了一个最小化配置项，说明如何使用 `tabularray` 绘制带标题的表格。
+\begin{table}[htbp]
+  \centering
+  \begin{tblr}{colspec={lX[2]X[2]}}
+    \toprule
+    组件 & 示例参数 & 说明 \\
+    \midrule
+    数据接口 & `collector.yaml` & 定义数据源、采样频率与脱敏策略。 \\
+    推理引擎 & `engine.toml` & 控制训练轮数、随机种子与日志级别。 \\
+    可视化 & `report.json` & 记录图表主题、配色以及导出格式。 \\
+    \bottomrule
+  \end{tblr}
+  \caption{示例配置表}
+  \label{tab:config}
+\end{table}
+
+\section{脚本示例}
+可以通过 `lstlisting` 或 `verbatim` 展示运行命令：
+\begin{verbatim}
+python tools/run_pipeline.py --config configs/demo.yaml
+\end{verbatim}
+当段落需要引用其他章节结果时，可使用“如第~\ref{chap:evaluation} 章所述”保持连贯。
+
+\section{界面占位图}
+图~\ref{fig:impl-demo} 演示如何引用 `figures/ch3/xdulogo.pdf`。实际使用时，将图片替换为真实架构或界面草图即可。
+\begin{figure}[htbp]\centering
+  \includegraphics[width=0.4\textwidth,height=0.4\textwidth,keepaspectratio]{figures/ch3/xdulogo.pdf}
+  \caption{系统实现章节的示意插图\label{fig:impl-demo}}
+\end{figure}

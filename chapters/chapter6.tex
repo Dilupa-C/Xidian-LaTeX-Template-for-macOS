@@ -1,0 +1,13 @@
+\chapter{协作与复现建议}\label{chap:collab}
+本章总结多人协作、数据脱敏与复现步骤。保持这些占位内容可以帮助团队快速理解模板结构，然后根据项目需求加以扩展。\parencite{workflow-tools}
+
+\section{环境准备}
+强调统一字体、MacTeX 版本以及 `latexmkrc` 配置的重要性。可列出常用命令，提醒成员在提交前执行 `latexmk -C` 清理中间文件。
+
+\section{数据管理}
+公开仓库仅保留合成或匿名化数据，真实数据应存放在受控存储中。若需要共享脚本，可在附录中提供伪代码或命令示例。
+
+\begin{figure}[htbp]\centering
+  \includegraphics[width=0.4\textwidth,height=0.4\textwidth,keepaspectratio]{figures/ch6/xdulogo.pdf}
+  \caption{数据管理流程示意\label{fig:dataflow-placeholder}}
+\end{figure}

@@ -1,0 +1,18 @@
+\chapter{评测与分析}\label{chap:evaluation}
+该章节演示如何记录实验设置、指标与结论。所有数字均为示意，目的是让用户了解排版结构与交叉引用写法。\parencite{evaluation-handbook}
+
+\section{实验设置}
+假设示例系统在三组不同策略下运行，记录样本量、时间跨度与硬件环境即可。为了突出关键参数，可以插入简化公式：
+\begin{equation}
+  \mathrm{Score} = \alpha \cdot \mathrm{Engagement} + (1-\alpha) \cdot \mathrm{Accuracy}, \quad \alpha = 0.6.
+\end{equation}
+
+\section{结果展示}
+文本中描述趋势，再配合表格或图形。图~\ref{fig:evaluation-placeholder} 依旧使用 `figures/ch4/xdulogo.pdf` 作为占位图，提醒读者在公开仓库中不要存放敏感数据。
+\begin{figure}[htbp]\centering
+  \includegraphics[width=0.4\textwidth,height=0.4\textwidth,keepaspectratio]{figures/ch4/xdulogo.pdf}
+  \caption{评测章节的占位图，可替换为真实结果\label{fig:evaluation-placeholder}}
+\end{figure}
+
+\section{讨论}
+讨论部分可以回溯需求与实现章节的假设，分析失败案例或潜在风险，再说明可复现步骤。使用条列或小节能够增强可读性。
