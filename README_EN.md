@@ -8,6 +8,7 @@
 
 </div>
 
+---
 
 ## 🙏 Acknowledgements
 
@@ -17,80 +18,167 @@ This project is based on **[XDUTS](https://github.com/note286/xduts)** (Xidian U
 
 ## 📖 Overview
 
-The minimal verified workflow for this repository: **Install fonts → Ensure MacTeX 2025 → Run `sudo tlmgr update --self --all` → Compile following the commands below**. Skipping any step may cause common issues like misplaced images, PDF box errors, or missing packages.
+This template is designed specifically for **macOS + TeX Live 2025** environment, helping Xidian students write their theses efficiently.
 
+### ✨ Core Workflow
 
-## 1. Environment Requirements (MacTeX 2025)
-1. **Fonts**: Install Windows-style Song/Hei/Kai fonts following [Font/Readme.md](./Font/Readme.md).
-2. **Check Version**:
-   ```bash
-   /Library/TeX/texbin/xelatex --version | head -1
-   ```
-   - If output contains `TeX Live 2025`: Environment is already pointing to 2025.
-   - If not 2025: Continue to step 3.
-3. **Installation/Switching Guide**: See [MacTex_Installation_Settings/Readme.md](./MacTex_Installation_Settings/Readme.md). If `/usr/local/texlive/2025` doesn't exist, download from `https://mirror.tuna.tsinghua.edu.cn/ctan/systems/mac/mactex/MacTeX.pkg` and install. If multiple versions are installed, navigate to `MacTex_Installation_Settings/` and run `./switch-texlive.sh 2025` to switch symbolic links.
-4. **Update tlmgr (Required)**:
-   ```bash
-   sudo tlmgr update --self --all
-   ```
-   This must be executed after any installation or switching to get the latest `xdvipdfmx` and packages.
+```
+Install Fonts → Configure MacTeX 2025 → Update Packages → Compile Thesis
+```
+
+### ⚠️ Important Notice
+
+Skipping any step may result in: misplaced images, PDF box errors, missing packages, etc. Please follow the steps strictly.
 
 ---
 
-## 2. Command-Line Compilation
-In the project root directory:
+## 🚀 Quick Start
+
+### Step 1: Install Fonts
+
+macOS system fonts differ from Windows versions, which can cause inconsistent typesetting.
+
+**Action**: Follow [Font/Readme.md](./Font/Readme.md) to install Windows-style Song/Hei/Kai fonts.
+
+> 💡 Fonts take effect immediately after installation, no system restart required.
+
+---
+
+### Step 2: Configure MacTeX 2025 Environment
+
+#### 2.1 Check Current Version
+
 ```bash
-# Compile main.tex (XeLaTeX + BibTeX)
+/Library/TeX/texbin/xelatex --version | head -1
+```
+
+**Interpret results:**
+- ✅ Output contains `TeX Live 2025`: Correctly configured, skip to [Step 2.3](#23-update-packages-required)
+- ⚠️ Output shows other year or command not found: Need installation/switching, continue to Step 2.2
+
+#### 2.2 Install or Switch to 2025
+
+For detailed installation and switching tutorials, please see:
+
+👉 **[MacTex_Installation_Settings/Readme.md](./MacTex_Installation_Settings/Readme.md)**
+
+This document provides:
+- 📥 MacTeX 2025 download and installation guide
+- 🔄 Multi-version switching script usage
+- 🔧 Complete troubleshooting solutions
+
+**Quick operation**:
+```bash
+# If 2025 exists but not active, quick switch:
+cd MacTex_Installation_Settings
+./switch-texlive.sh 2025
+```
+
+#### 2.3 Update Packages (Required)
+
+> ⚠️ **Critical Step**: The author once skipped this step, resulting in misplaced images in compiled PDFs!
+
+Whether fresh installation or version switch, you must execute:
+
+```bash
+sudo tlmgr update --self --all
+```
+
+**Purpose**:
+- Update `tlmgr` tool itself
+- Sync all packages to latest versions
+- Fix known bugs (e.g., `xdvipdfmx` image positioning issues)
+
+> 💡 Recommended to re-execute before each template update.
+
+**Environment setup complete!** Now you can start compiling your thesis.
+
+---
+
+## 📝 Compiling Your Thesis
+
+### Method 1: Command Line (Recommended)
+
+Execute in project root directory:
+
+```bash
+# Compile thesis (XeLaTeX + BibTeX)
 latexmk -xelatex -bibtex -synctex=1 -interaction=nonstopmode main.tex
 
 # Clean temporary files (keep .bbl)
 latexmk -c
 
-# Full clean (remove .bbl too)
+# Full clean (including .bbl)
 latexmk -C
 ```
 
-> To keep the PDF in the root directory, create a symbolic link after `latexmk` completes: `ln -sf build/main.pdf ./main.pdf` (works with advanced setup).
+**After successful compilation**, `main.pdf` will be generated in the root directory.
 
 ---
 
-## 3. TeXstudio Quick Configuration
-Menu: `Options → Configure TeXstudio → Build`
-- `Default Compiler`: `XeLaTeX`
-- `Default Bibliography Tool`: `BibTeX`
-- `PDF Viewer`: Internal PDF Viewer (Embedded)
-- `Quick Build`: Change to `txs:///latexmk`
-- `Commands → Latexmk`:
-  ```
-  latexmk -xelatex -bibtex -synctex=1 -interaction=nonstopmode %.tex
-  ```
+### Method 2: Using TeXstudio
 
-You can add in **Tools → User Commands**:
-```text
+If you prefer a GUI editor, you can configure TeXstudio:
+
+#### Configuration Steps
+
+Open `Options → Configure TeXstudio → Build` and set:
+
+| Option | Value |
+|--------|-------|
+| Default Compiler | `XeLaTeX` |
+| Default Bibliography Tool | `BibTeX` |
+| PDF Viewer | `Internal PDF Viewer (Embedded)` |
+| Quick Build | `txs:///latexmk` |
+
+In `Commands → Latexmk`, enter:
+```
+latexmk -xelatex -bibtex -synctex=1 -interaction=nonstopmode %.tex
+```
+
+#### Add Clean Commands (Optional)
+
+In `Tools → User Commands`, add:
+```
 latexmk -c %.tex        # Clean
 latexmk -C %.tex        # Clean Full
 ```
-Ensure the Root document in TeXstudio is locked to `main.tex`.
+
+#### Lock Main Document
+
+Ensure `main.tex` is locked as the Root document in TeXstudio toolbar.
+
+**After configuration**, click "Build & View" to compile and preview your thesis.
 
 ---
 
-## 4. Advanced: Centralize Build Output to build/
-For a cleaner repository, place output and auxiliary files in `build/` and `build/aux/`:
+## 🔧 Advanced Configuration
+
+### Centralized Output Management
+
+To keep the project root clean, centralize build output to `build/` directory:
 
 ```bash
 latexmk -xelatex -bibtex -synctex=1 \
   -outdir=build \
   -auxdir=build/aux -emulate-aux-dir \
   -interaction=nonstopmode main.tex
+```
 
+**Clean commands**:
+```bash
 latexmk -c -outdir=build -auxdir=build/aux -emulate-aux-dir
 latexmk -C -outdir=build -auxdir=build/aux -emulate-aux-dir
 ```
 
-> `-emulate-aux-dir` requires TeX Live 2025, newer versions of latexmk have it built-in.
+> 📌 `-emulate-aux-dir` feature requires TeX Live 2025.
 
-### Optional latexmkrc
-Create `latexmkrc` in the project root:
+---
+
+### Using latexmkrc to Simplify Commands
+
+Create a `latexmkrc` configuration file in project root:
+
 ```perl
 $pdf_mode = 1;
 $pdflatex = 'xelatex -interaction=nonstopmode -file-line-error -synctex=1 %O %S';
@@ -101,49 +189,133 @@ $emulate_aux_dir = 1;
 $clean_ext       = 'synctex.gz xdv run.xml';
 $clean_full_ext  = 'bbl';
 ```
-After this, simply run `latexmk` / `latexmk -C`.
+
+**After configuration**, simply run:
+```bash
+latexmk        # Compile
+latexmk -c     # Clean
+latexmk -C     # Full clean
+```
+
+**View PDF** (optional):
+```bash
+ln -sf build/main.pdf ./main.pdf
+```
 
 ---
 
-## 5. Directory and .gitignore Suggestions
+## 📂 Project Structure & Resource Management
+
+### Directory Structure
+
 ```
+.
+├── main.tex              # Main document
+├── chapters/             # Chapter contents
+├── figures/              # Image resources
+│   ├── ch2/             # Chapter 2 images
+│   ├── ch3/             # Chapter 3 images
+│   └── ...
+├── Font/                 # Windows font files
+├── MacTex_Installation_Settings/  # MacTeX management tools
+└── build/                # Build output (optional)
+```
+
+### Image Management
+
+- Store all images in `figures/` directory
+- Use separate subdirectories for each chapter (e.g., `ch2/`, `ch3/`)
+- Reference in text: `\includegraphics{figures/ch2/example.pdf}`
+
+### Git Ignore Suggestions
+
+Add to `.gitignore`:
+
+```gitignore
 build/
-build/aux/
-figures/
+*.synctex.gz
+*.xdv
+*.aux
+*.log
+*.out
 ```
-- Recommended additions to `.gitignore`:
-  ```
-  build/
-  *.synctex.gz
-  *.xdv
-  ```
-- To frequently view PDFs, use `ln -sf build/main.pdf ./main.pdf`.
-- Place all images in `figures/` (each chapter has its own `chX/xdulogo.pdf` placeholder). Add/replace materials by chapter and reference them in text using `\includegraphics{figures/chX/<filename>}`.
 
 ---
 
-## 6. Common Issues
-- `PDF file is tagged...` / `Object @page.n already defined.`: These are metadata from old PDF images. Keep TeX Live updated; for individual images, add `pagebox=cropbox` or `trim=..` in `\includegraphics`.
-- `Missing character: There is no ， in font cmr12!`: Chinese punctuation should not be in math mode. Use `\text{，}` instead.
+## ❓ Common Issues
+
+### Issue 1: PDF "tagged" Warning
+
+**Error message**: `PDF file is tagged...` or `Object @page.n already defined.`
+
+**Cause**: Metadata issues in old PDF images.
+
+**Solution**:
+- Keep TeX Live updated (execute `sudo tlmgr update --self --all`)
+- Or add parameters in `\includegraphics`: `pagebox=cropbox` or `trim=...`
 
 ---
 
-## 7. About XDUTS
-XDUTS (Xidian University TeX Suite) is a LaTeX template for undergraduate and graduate theses at Xidian University, supporting XeLaTeX on Windows/macOS/Linux/Overleaf. The repository includes:
+### Issue 2: Chinese Punctuation Error
+
+**Error message**: `Missing character: There is no ， in font cmr12!`
+
+**Cause**: Chinese punctuation cannot be directly used in math mode.
+
+**Solution**: Wrap Chinese punctuation with `\text{，}`.
+
+```latex
+% Wrong
+$x = 1，y = 2$
+
+% Correct
+$x = 1\text{，}y = 2$
+```
+
+---
+
+### Issue 3: Misplaced Images After Compilation
+
+**Cause**: Package update not executed.
+
+**Solution**: Execute `sudo tlmgr update --self --all` immediately.
+
+---
+
+## 📚 About XDUTS
+
+**XDUTS** (Xidian University TeX Suite) is the officially recognized LaTeX template for undergraduate/graduate theses at Xidian University, supporting multiple platforms:
+
+- ✅ Windows / macOS / Linux
+- ✅ Overleaf online editing
+- ✅ XeLaTeX compilation
+
+### Template Files
+
 - `xdufont.sty` - Font configuration package
-- `xdupgthesis.cls` / `xduugthesis.cls` / `xduugtp.cls` - Document class files
+- `xdupgthesis.cls` - Graduate thesis document class
+- `xduugthesis.cls` - Undergraduate thesis document class
+- `xduugtp.cls` - Undergraduate course paper document class
 
-For more details, template parameters, and complete documentation, please read `xduts.pdf`. Also refer to the upstream project: [XDUTS on GitHub](https://github.com/note286/xduts) / [CTAN](https://www.ctan.org/pkg/xduts).
+### More Resources
+
+- 📖 Complete documentation: `xduts.pdf`
+- 🔗 Upstream project: [XDUTS on GitHub](https://github.com/note286/xduts)
+- 📦 CTAN release: [CTAN Package](https://www.ctan.org/pkg/xduts)
 
 ---
 
-## ⚡ Quick Workflow
-1. `sudo tlmgr update --self --all`
-2. `latexmk -xelatex -bibtex -synctex=1 main.tex`
-3. `latexmk -c` or `latexmk -C`
+## ⚡ One-Line Workflow
 
----
+```bash
+# 1️⃣ Update packages
+sudo tlmgr update --self --all
 
-## 📄 License
+# 2️⃣ Compile thesis
+latexmk -xelatex -bibtex -synctex=1 main.tex
 
-See [LICENSE](./LICENSE) file for details.
+# 3️⃣ Clean temporary files
+latexmk -c
+```
+
+**Good luck with your thesis writing!** 🎓
