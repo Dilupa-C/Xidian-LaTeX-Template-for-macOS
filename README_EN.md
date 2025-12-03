@@ -31,6 +31,19 @@ Skipping any step may result in: misplaced images, PDF box errors, missing packa
 
 ---
 
+## 📥 Download Template
+
+It is recommended to download the packaged Release version. Choose according to your OS:
+
+👉 **[Go to Releases Page](https://github.com/Ronchy2000/Xidian-LaTeX-Template-for-macOS/releases)**
+
+| Version | Filename | Description |
+| :--- | :--- | :--- |
+| **macOS** | `Xidian-LaTeX-Template-macOS.zip` | ✅ Includes fonts and MacTeX scripts |
+| **Windows** | `Xidian-LaTeX-Template-Windows.zip` | 🚀 Lite version, excludes macOS-specific files |
+
+---
+
 ## 💻 Windows Users
 
 For Windows users, please refer to the dedicated guide:

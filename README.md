@@ -32,6 +32,19 @@
 
 ---
 
+## 📥 下载模板
+
+推荐直接下载打包好的 Release 版本，根据你的操作系统选择：
+
+👉 **[点击前往 Releases 页面下载](https://github.com/Ronchy2000/Xidian-LaTeX-Template-for-macOS/releases)**
+
+| 版本 | 文件名 | 说明 |
+| :--- | :--- | :--- |
+| **macOS** | `Xidian-LaTeX-Template-macOS.zip` | ✅ 包含字体文件和 MacTeX 配置脚本 |
+| **Windows** | `Xidian-LaTeX-Template-Windows.zip` | 🚀 精简版，移除 macOS 专用字体和脚本 |
+
+---
+
 ## 💻 Windows 用户
 
 Windows 用户请直接参考专门的指南：

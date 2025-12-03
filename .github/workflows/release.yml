@@ -29,12 +29,36 @@ jobs:
         run: |
           zip -r Xidian-LaTeX-Template-Windows.zip . -x "*.git*" -x ".github/*" -x ".gitignore" -x "Font/*" -x "MacTex_Installation_Settings/*" -x "switch-texlive.sh" -x "*.zip"
 
+      - name: Generate Fixed Release Note
+        # 生成固定的说明信息文件
+        run: |
+          cat <<EOF > release_note_footer.md
+          
+          ---
+          ## 📥 下载与安装 / Download & Install
+          
+          | 操作系统 / OS | 推荐文件 / Recommended File | 说明 / Note |
+          | :--- | :--- | :--- |
+          | **macOS** | \`Xidian-LaTeX-Template-macOS.zip\` | ✅ 内含字体 & 配置脚本 (Includes fonts & scripts) |
+          | **Windows** | \`Xidian-LaTeX-Template-Windows.zip\` | 🚀 精简版 (Lite version) |
+          
+          > ⚠️ **注意 / Warning**: 请勿直接下载 \`Source code\`，除非你熟悉 Git 操作。请下载上方表格中的 \`.zip\` 文件。
+          > Please download the \`.zip\` files listed above, NOT the \`Source code\`.
+          
+          ## 📖 使用文档 / Documentation
+          - [中文文档 (Chinese)](https://github.com/Ronchy2000/Xidian-LaTeX-Template-for-macOS/blob/master/README.md)
+          - [English Guide](https://github.com/Ronchy2000/Xidian-LaTeX-Template-for-macOS/blob/master/README_EN.md)
+          EOF
+
       - name: Upload Release Assets
         uses: softprops/action-gh-release@v1
         with:
           files: |
             Xidian-LaTeX-Template-macOS.zip
             Xidian-LaTeX-Template-Windows.zip
+          body_path: release_note_footer.md
+          append_body: true        # 关键：将固定说明追加到现有内容后面，而不是覆盖
+          generate_release_notes: true # 如果是命令行打tag，自动生成变更日志
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
