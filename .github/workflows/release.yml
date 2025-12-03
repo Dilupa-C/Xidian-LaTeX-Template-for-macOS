@@ -54,6 +54,8 @@ jobs:
         # 使用 softprops 仅负责创建 Release 或更新说明，不处理文件上传（避免 422 错误）
         uses: softprops/action-gh-release@v1
         with:
+          # 设置 Release 标题格式：Xidian LaTeX Template v1.x
+          name: Xidian LaTeX Template ${{ github.ref_name }}
           # 不在此处上传文件
           files: "" 
           # 自动生成变更日志（如果 Release 说明为空）
